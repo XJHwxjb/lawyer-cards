@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>06-深色</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:1080px;height:1440px;overflow:hidden;background:#1B1834;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased;}
+  .card{position:relative;width:1080px;height:1440px;background:#1B1834;overflow:hidden;}
+
+  .glow{position:absolute;left:0;top:0;width:1080px;height:1440px;
+        background:
+          radial-gradient(760px 560px at 4% -6%,rgba(216,190,140,.20),rgba(216,190,140,0) 62%),
+          radial-gradient(680px 480px at 104% 104%,rgba(52,86,134,.30),rgba(52,86,134,0) 60%);}
+
+  /* 数字水印：只做质感，不抢内容 */
+  .wm{position:absolute;right:-40px;bottom:110px;font-family:Georgia,"Times New Roman",serif;
+      font-size:560px;line-height:1;color:#D8BE8C;opacity:.055;letter-spacing:-.03em;}
+
+  .stage{position:absolute;left:74px;top:0;width:932px;height:1290px;
+         display:flex;flex-direction:column;justify-content:center;}
+
+  .kick{display:flex;align-items:center;font-size:19px;color:rgba(255,255,255,.42);letter-spacing:.22em;}
+  .kick i{display:block;width:26px;height:1px;background:#D0B27B;margin-right:14px;}
+  .kick b{font-size:17px;font-weight:400;color:rgba(255,255,255,.3);letter-spacing:.14em;margin-left:16px;}
+
+  h1{margin-top:42px;font-size:70px;line-height:1.32;font-weight:800;
+     color:#FFFFFF;letter-spacing:.004em;}
+  h1 .g{color:#D0B27B;}
+
+  .pts{margin-top:66px;}
+  .pt{display:flex;margin-bottom:30px;}
+  .pt:last-child{margin-bottom:0;}
+  .pt i{flex:none;width:7px;height:7px;border-radius:50%;background:#D0B27B;margin:17px 20px 0 0;}
+  .pt p{font-size:31px;line-height:1.78;color:rgba(255,255,255,.76);letter-spacing:.01em;}
+  .pt b{color:#FFFFFF;font-weight:700;}
+
+  .memo{margin-top:38px;padding-left:24px;border-left:2px solid #D0B27B;
+        font-size:21px;line-height:1.8;color:rgba(255,255,255,.5);letter-spacing:.02em;}
+
+  .sig{position:absolute;left:0;bottom:0;width:1080px;height:150px;background:#151230;
+       border-top:1px solid rgba(216,190,140,.16);
+       display:flex;align-items:center;padding:0 74px;}
+  .sig .av{width:66px;height:66px;border-radius:50%;object-fit:cover;
+           border:1px solid rgba(216,190,140,.45);}
+  .sig .who{margin-left:22px;}
+  .sig .nm{font-size:30px;font-weight:600;color:#FFFFFF;letter-spacing:.04em;}
+  .sig .og{margin-top:6px;font-size:22px;color:rgba(255,255,255,.42);letter-spacing:.08em;}
+  .sig .qr{width:112px;height:112px;margin-left:auto;padding:9px;background:#FFFFFF;
+       border-radius:9px;flex:none;box-sizing:content-box;}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="glow"></div>
+  <div class="wm">{{BIGNUM}}</div>
+
+  <div class="stage">
+    <div class="kick"><i></i>{{KICKER}}<b>第 {{ISSUE}} 期</b></div>
+    <h1>{{TITLE}}</h1>
+
+    <div class="pts">
+      <!--ITEM1-->
+      <div class="pt"><i></i><p>{{POINT_1}}</p></div>
+      <!--/ITEM1-->
+      <!--ITEM2-->
+      <div class="pt"><i></i><p>{{POINT_2}}</p></div>
+      <!--/ITEM2-->
+      <!--ITEM3-->
+      <div class="pt"><i></i><p>{{POINT_3}}</p></div>
+      <!--/ITEM3-->
+    </div>
+
+    <!--MEMO-->
+    <div class="memo">{{MEMO}}</div>
+    <!--/MEMO-->
+  </div>
+
+  <div class="sig">
+    <img class="av" src="../assets/avatar.png" alt="">
+    <div class="who">
+      <div class="nm">{{NAME}}</div>
+      <div class="og">{{ORG}}</div>
+    </div>
+    <img class="qr" src="../assets/qr.png" alt="">
+  </div>
+
+</div>
+</body>
+</html>

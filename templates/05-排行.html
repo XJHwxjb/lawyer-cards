@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>05-排行</title>
+<style>
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:1080px;height:1440px;overflow:hidden;background:#1B1834;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased;}
+  .card{position:relative;width:1080px;height:1440px;overflow:hidden;
+        background:linear-gradient(158deg,#241F44 0%,#1A1731 44%,#221C3E 72%,#1D1836 100%);}
+  .rays{position:absolute;left:0;top:0;width:1080px;height:1440px;}
+  .rays .dim{opacity:.155;}
+  .rays .dim2{opacity:.085;}
+  .halo{position:absolute;left:-120px;top:-260px;width:1320px;height:900px;
+        background:radial-gradient(560px 380px at 50% 42%,rgba(216,190,140,.13),rgba(216,190,140,0) 66%);}
+  .ring{position:absolute;border-radius:50%;border:1px solid rgba(216,190,140,.10);}
+  .ring.a{width:1180px;height:1180px;left:-50px;top:120px;}
+  .ring.b{width:880px;height:880px;left:100px;top:270px;border-color:rgba(216,190,140,.07);}
+
+  .brand{position:absolute;left:0;top:50px;width:1080px;text-align:center;}
+  .brand .wm{position:relative;display:inline-block;font-weight:900;font-size:76px;line-height:1;
+        letter-spacing:.01em;transform:skewX(-8deg) scaleX(1.05);padding:0 16px 12px;}
+  .brand .wm span{position:relative;z-index:3;display:block;
+        -webkit-background-clip:text;background-clip:text;
+        -webkit-text-fill-color:transparent;color:transparent;
+        background-image:linear-gradient(180deg,#FFF2CE 0%,#F6DEAC 14%,#EBCA90 36%,
+              #DDB273 64%,#C4934F 100%);
+        -webkit-text-stroke:2px #D8AC6E;}
+  .brand .wm:before,.brand .wm:after{content:attr(data-t);position:absolute;top:0;left:16px;}
+  .brand .wm:after{-webkit-text-stroke:4px #FFFBEF;color:#FFFBEF;
+        -webkit-text-fill-color:#FFFBEF;z-index:2;}
+  .brand .wm:before{-webkit-text-stroke:9px #0C0918;color:#0C0918;
+        -webkit-text-fill-color:#0C0918;z-index:1;
+        text-shadow:3px 4px 0 #0C0918,0 12px 24px rgba(0,0,0,.42);}
+  .brand .sb{position:relative;display:table;margin:18px auto 0;padding:0 80px;}
+  .brand .sb:before,.brand .sb:after{content:'';position:absolute;top:50%;width:62px;height:1px;}
+  .brand .sb:before{left:0;background:linear-gradient(90deg,transparent,rgba(216,190,140,.70));}
+  .brand .sb:after{right:0;background:linear-gradient(90deg,rgba(216,190,140,.70),transparent);}
+  .brand .sb span{font-size:12.5px;letter-spacing:.42em;text-indent:.42em;
+        color:rgba(232,209,164,.80);}
+
+  .pill{position:absolute;left:58px;top:-27px;background:#241F44;color:#F2E1BE;
+        font-size:22px;line-height:1;font-weight:700;letter-spacing:.14em;
+        padding:17px 32px;border-radius:999px;text-indent:.14em;
+        box-shadow:0 10px 24px rgba(10,8,24,.34);}
+  .pill:after{content:'';position:absolute;left:50%;bottom:-9px;margin-left:-9px;
+        width:18px;height:9px;background:#241F44;clip-path:polygon(0 0,100% 0,50% 100%);}
+
+  .plate{position:absolute;left:64px;top:1232px;width:952px;height:140px;
+         background:#FFFFFF;border-radius:20px;display:flex;align-items:center;
+         padding:0 26px;box-shadow:0 16px 38px rgba(8,6,22,.34);}
+  .plate .av{width:76px;height:76px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #EFE2C8;}
+  .plate .who{margin-left:22px;flex:1 1 auto;min-width:0;}
+  .plate .nm{font-size:31px;font-weight:700;color:#241E44;letter-spacing:.05em;display:flex;align-items:center;}
+  .plate .tag{margin-left:14px;font-size:17px;font-weight:400;color:#A8802F;
+         border:1px solid rgba(168,128,47,.42);border-radius:999px;padding:5px 13px;letter-spacing:.06em;}
+  .plate .og{margin-top:8px;font-size:21px;color:#8A8496;letter-spacing:.08em;}
+  .plate .qr{width:118px;height:118px;border-radius:8px;flex:none;}
+  .pfoot{position:absolute;left:58px;right:58px;bottom:44px;
+        border-top:1px solid rgba(196,158,96,.30);padding-top:22px;
+        display:flex;align-items:center;font-size:16px;letter-spacing:.2em;color:#A8802F;}
+  .pfoot i{display:block;width:34px;height:1px;background:rgba(168,128,47,.5);margin-right:13px;}
+
+
+  .pill{top:196px;left:74px;}
+  .pill:after{display:none;}
+  .issue{position:absolute;right:74px;top:214px;font-size:18px;letter-spacing:.24em;
+         color:rgba(216,190,140,.58);}
+  .hero{position:absolute;left:74px;top:252px;width:932px;}
+  .hero h1{font-size:70px;line-height:1.26;font-weight:800;color:#F7F0E3;letter-spacing:.006em;}
+  .hero h1 .g{color:#E2C68D;}
+  .hero h1 .mk{background:linear-gradient(180deg,rgba(240,190,116,.22) 14%,rgba(238,178,92,.52) 14%,
+       rgba(238,178,92,.52) 90%,rgba(240,190,116,.22) 90%);padding:0 6px;margin:0 -6px;border-radius:3px;}
+
+  .row{position:absolute;left:80px;width:920px;height:216px;border-radius:24px;
+       background:linear-gradient(172deg,#FEF9F0 0%,#FBF1DF 66%,#F8EBD4 100%);
+       box-shadow:0 22px 48px rgba(8,6,22,.42);display:flex;align-items:center;padding:0 46px;}
+  .r1{top:450px;transform:rotate(-.9deg);z-index:3;}
+  .r2{top:678px;transform:rotate(.6deg);z-index:2;}
+  .r3{top:906px;transform:rotate(-.35deg);z-index:1;}
+
+  .no{flex:none;width:80px;height:80px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-family:Georgia,"Times New Roman",serif;font-size:42px;font-weight:700;color:#FFFFFF;}
+  .r1 .no{background:linear-gradient(135deg,#EFDCAF,#C9A45E);}
+  .r2 .no{background:linear-gradient(135deg,#CBBFD2,#8E82A8);}
+  .r3 .no{background:linear-gradient(135deg,#E4BE99,#B9814F);}
+
+  .tx{margin-left:38px;flex:1;min-width:0;}
+  .tx h3{font-size:54px;line-height:1.24;font-weight:800;color:#241E44;letter-spacing:.008em;}
+  .tx p{margin-top:16px;font-size:38px;line-height:1.38;color:#6E6683;letter-spacing:.012em;}
+</style>
+</head>
+<body>
+<div class="card">
+
+<svg class="rays" viewBox="0 0 1080 1440" preserveAspectRatio="none">
+      <g class="dim"><line x1="540" y1="210" x2="2273.0" y2="453.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="2231.7" y2="658.0" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="2166.4" y2="856.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="2077.9" y2="1045.0" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1967.7" y2="1222.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1837.1" y2="1384.8" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1688.1" y2="1530.7" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1522.8" y2="1658.0" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1343.5" y2="1764.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1152.9" y2="1849.2" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="953.5" y2="1910.5" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="748.2" y2="1947.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="540.0" y2="1960.0" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="331.8" y2="1947.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="126.5" y2="1910.5" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-72.9" y2="1849.2" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-263.5" y2="1764.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-442.8" y2="1658.0" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-608.1" y2="1530.7" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-757.1" y2="1384.8" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-887.7" y2="1222.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-997.9" y2="1045.0" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-1086.4" y2="856.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-1151.7" y2="658.0" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-1193.0" y2="453.6" stroke="#D8BE8C" stroke-width="1"/></g>
+      <g class="dim2"><line x1="540" y1="210" x2="2285.7" y2="332.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="2255.0" y2="558.2" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="2195.1" y2="778.5" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="2107.0" y2="989.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1992.3" y2="1186.4" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1852.9" y2="1367.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1691.1" y2="1528.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1509.8" y2="1666.7" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1311.9" y2="1780.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="1100.9" y2="1867.7" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="880.4" y2="1926.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="654.1" y2="1956.3" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="425.9" y2="1956.3" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="199.6" y2="1926.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-20.9" y2="1867.7" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-231.9" y2="1780.6" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-429.8" y2="1666.7" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-611.1" y2="1528.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-772.9" y2="1367.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-912.3" y2="1186.4" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-1027.0" y2="989.1" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-1115.1" y2="778.5" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-1175.0" y2="558.2" stroke="#D8BE8C" stroke-width="1"/>
+      <line x1="540" y1="210" x2="-1205.7" y2="332.1" stroke="#D8BE8C" stroke-width="1"/></g>
+  </svg>
+  <div class="halo"></div>
+  <div class="ring a"></div>
+  <div class="ring b"></div>
+
+  <!--BRAND-->
+  <div class="brand">
+    <div class="wm" data-t="{{BRAND}}"><span>{{BRAND}}</span></div>
+    <div class="sb"><span>{{BRANDSUB}}</span></div>
+  </div>
+  <!--/BRAND-->
+
+  <!--KICKER-->
+  <div class="pill">{{KICKER}}</div>
+  <!--/KICKER-->
+  <!--IF:ISSUE-->
+  <div class="issue">第 {{ISSUE}} 期</div>
+  <!--/IF:ISSUE-->
+
+  <div class="hero"><h1>{{TITLE}}</h1></div>
+
+  <!--ITEM1-->
+  <div class="row r1">
+    <div class="no">1</div>
+    <div class="tx"><h3>{{POINT_1}}</h3><p>{{DESC_1}}</p></div>
+  </div>
+  <!--/ITEM1-->
+  <!--ITEM2-->
+  <div class="row r2">
+    <div class="no">2</div>
+    <div class="tx"><h3>{{POINT_2}}</h3><p>{{DESC_2}}</p></div>
+  </div>
+  <!--/ITEM2-->
+  <!--ITEM3-->
+  <div class="row r3">
+    <div class="no">3</div>
+    <div class="tx"><h3>{{POINT_3}}</h3><p>{{DESC_3}}</p></div>
+  </div>
+  <!--/ITEM3-->
+
+  <div class="plate">
+    <img class="av" src="../assets/avatar.png" alt="">
+    <div class="who">
+      <div class="nm">{{NAME}}<!--ORG--><span class="tag">{{ORG}}</span><!--/ORG--></div>
+      <div class="og">{{SUBTITLE}}</div>
+    </div>
+    <img class="qr" src="../assets/qr.png" alt="">
+  </div>
+
+</div>
+</body>
+</html>

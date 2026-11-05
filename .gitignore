@@ -1,0 +1,13 @@
+# 你的署名信息（每人一份，不进仓库）
+config.json
+
+# 渲染中间产物
+temp/
+
+# 出图结果（体积大，且属于你自己的内容）
+output/
+
+# 系统垃圾
+Thumbs.db
+desktop.ini
+.DS_Store

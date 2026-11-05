@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>08-对照</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:1080px;height:1440px;overflow:hidden;background:#FAF7F1;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased;}
+  .card{position:relative;width:1080px;height:1440px;background:#FAF7F1;overflow:hidden;}
+
+  .kick{position:absolute;left:74px;top:74px;display:flex;align-items:center;font-size:19px;
+        color:#8A8478;letter-spacing:.2em;}
+  .kick i{display:block;width:30px;height:1px;background:#D0B27B;margin-right:14px;}
+  .kick b{font-weight:400;font-size:17px;color:#B09A6E;letter-spacing:.1em;margin-left:16px;}
+
+  h1{position:absolute;left:74px;top:126px;width:932px;font-size:66px;line-height:1.24;
+     font-weight:800;color:#241E44;letter-spacing:.008em;}
+  h1 .g{color:#B08B45;}
+
+  .sub{position:absolute;left:74px;top:306px;width:900px;font-size:26px;line-height:1.5;color:#7C8697;}
+
+  /* ── 对照表 ── */
+  .tbl{position:absolute;left:74px;top:400px;width:932px;border-top:2px solid #241E44;}
+  .hd{display:flex;height:74px;}
+  .hd .c{padding:0 28px;display:flex;align-items:center;font-size:24px;letter-spacing:.14em;}
+  .hd .l{flex:none;width:440px;background:#EFE9DE;color:#6B6255;border-right:1px solid #DCD3C4;}
+  .hd .r{flex:1;background:#241E44;color:#FFFFFF;font-weight:700;}
+
+  .row{display:flex;height:150px;border-bottom:1px solid #E6DFD2;}
+  .row .c{padding:0 28px;display:flex;align-items:center;font-size:27px;line-height:1.42;}
+  .row .l{flex:none;width:440px;background:#F6F2EA;color:#84806F;
+          border-right:1px solid #DCD3C4;letter-spacing:.01em;}
+  .row .r{flex:1;background:#FFFFFF;color:#241E44;font-weight:700;letter-spacing:.01em;}
+
+  /* ── 卡尾钩子 ── */
+  .memo{position:absolute;left:74px;top:1120px;width:932px;padding-left:24px;
+        border-left:3px solid #D0B27B;font-size:28px;line-height:1.54;color:#3F4B5F;letter-spacing:.015em;}
+
+  /* ── 签名条 ── */
+  .sig{position:absolute;left:0;bottom:0;width:1080px;height:150px;background:#241E44;
+       display:flex;align-items:center;padding:0 74px;}
+  .sig .av{width:66px;height:66px;border-radius:50%;object-fit:cover;
+           border:1px solid rgba(216,190,140,.5);}
+  .sig .who{margin-left:22px;}
+  .sig .nm{font-size:30px;font-weight:600;color:#FFFFFF;letter-spacing:.04em;}
+  .sig .og{margin-top:6px;font-size:22px;color:rgba(255,255,255,.5);letter-spacing:.08em;}
+  .sig .qr{width:112px;height:112px;margin-left:auto;padding:9px;background:#FFFFFF;
+       border-radius:9px;flex:none;box-sizing:content-box;}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="kick"><i></i>{{KICKER}}<b>{{ISSUE}}</b></div>
+  <h1>{{TITLE}}</h1>
+  <div class="sub">{{SUBTITLE}}</div>
+
+  <div class="tbl">
+    <div class="hd">
+      <div class="c l">{{H1}}</div>
+      <div class="c r">{{H2}}</div>
+    </div>
+    <!--ITEM1-->
+    <div class="row">
+      <div class="c l">{{POINT_1}}</div>
+      <div class="c r">{{DESC_1}}</div>
+    </div>
+    <!--/ITEM1-->
+    <!--ITEM2-->
+    <div class="row">
+      <div class="c l">{{POINT_2}}</div>
+      <div class="c r">{{DESC_2}}</div>
+    </div>
+    <!--/ITEM2-->
+    <!--ITEM3-->
+    <div class="row">
+      <div class="c l">{{POINT_3}}</div>
+      <div class="c r">{{DESC_3}}</div>
+    </div>
+    <!--/ITEM3-->
+    <!--ITEM4-->
+    <div class="row">
+      <div class="c l">{{POINT_4}}</div>
+      <div class="c r">{{DESC_4}}</div>
+    </div>
+    <!--/ITEM4-->
+  </div>
+
+  <!--MEMO-->
+  <div class="memo">{{MEMO}}</div>
+  <!--/MEMO-->
+
+  <div class="sig">
+    <img class="av" src="../assets/avatar.png" alt="">
+    <div class="who">
+      <div class="nm">{{NAME}}</div>
+      <div class="og">{{ORG}}</div>
+    </div>
+    <img class="qr" src="../assets/qr.png" alt="">
+  </div>
+
+</div>
+</body>
+</html>

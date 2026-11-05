@@ -1,0 +1,12 @@
+{
+  "_configured": false,
+  "_help": "name / org 填你自己；brand 是品牌系列卡片顶部那个栏目名（不填就用 name）；brandsub 是它下面那行小字。填完把 _configured 改成 true。",
+  "name": "",
+  "org": "",
+  "brand": "",
+  "brandsub": "",
+  "kicker": "法律常识",
+  "issue": "",
+  "page": "01 / 03",
+  "edge": ""
+}
