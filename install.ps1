@@ -1,7 +1,8 @@
 ﻿#Requires -Version 5.0
 <#
-  律师朋友圈卡片 · 一键安装
+  朋友圈发图 · 一键安装
   把当前文件夹复制到 %USERPROFILE%\.workbuddy\skills\lawyer-cards
+  （文件夹名固定，WorkBuddy 技能面板里显示的名字是「朋友圈发图」）
 
   用法：
     powershell -ExecutionPolicy Bypass -File .\install.ps1
@@ -10,7 +11,8 @@
 $ErrorActionPreference = 'Stop'
 
 Write-Host ''
-Write-Host '  律师朋友圈卡片 · 安装程序' -ForegroundColor Cyan
+Write-Host '  朋友圈发图 · 安装程序' -ForegroundColor Cyan
+Write-Host '  技能名：朋友圈发图    文件夹：lawyer-cards' -ForegroundColor DarkGray
 Write-Host '  ------------------------------------' -ForegroundColor DarkGray
 Write-Host ''
 
@@ -100,7 +102,7 @@ Write-Host ''
 Write-Host '  ------------------------------------' -ForegroundColor DarkGray
 Write-Host '  装好了。接下来：' -ForegroundColor Cyan
 Write-Host '    1. 重启 WorkBuddy'
-Write-Host '    2. 直接说：「今天想讲讲竞业限制」'
+Write-Host '    2. 直接说：「用朋友圈发图，今天想讲讲竞业限制」'
 Write-Host '    3. 它会给你三个标题，挑一个就出图'
 Write-Host ''
 Write-Host '  头像和二维码在 assets 文件夹里，换成自己的即可。' -ForegroundColor DarkGray
