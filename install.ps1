@@ -74,7 +74,7 @@ $tplCount = 0
 if (Test-Path -LiteralPath $tplDir) {
     $tplCount = (Get-ChildItem -LiteralPath $tplDir -Filter '*.html').Count
 }
-Write-Host "    模板数量：$tplCount / 10" -ForegroundColor DarkGray
+Write-Host "    模板数量：$tplCount / 14" -ForegroundColor DarkGray
 
 $edge = $null
 $cands = @()
