@@ -4,11 +4,45 @@
 <meta charset="utf-8">
 <title>13-品牌对照</title>
 <style>
+:root{
+  --ink-1:#0C0918;
+  --ink-2:#100C24;
+  --ink-6:#1A1436;
+  --ink-5:#1A1731;
+  --ink-7:#1B1834;
+  --ink-8:#1D1836;
+  --ink-9:#221C3E;
+  --ink-12:#241D4E;
+  --ink-10:#241E44;
+  --ink-11:#241F44;
+  --gray-1:#57506C;
+  --neutral-3:#8A8496;
+  --neutral-4:#8B8398;
+  --gold-3:#A8802F;
+  --gray-5:#A9A2B4;
+  --gold-4:#B57F38;
+  --gold-12:#D2A05C;
+  --gold-18:#D8BE8C;
+  --gold-17:#E2BA7E;
+  --gold-19:#E6C085;
+  --cream-1:#EFE2C8;
+  --gold-30:#F2E1BE;
+  --gold-26:#F4DAA6;
+  --cream-3:#F8EBD4;
+  --cream-9:#FBF1DF;
+  --cream-14:#FEF9F0;
+  --cream-7:#FFF6DA;
+  --cream-15:#FFFBEF;
+  --neutral-5:#FFFFFF;
+}
+  /* SVG 呈现属性不能用 var()，用属性选择器覆盖 */
+[stroke="#D8BE8C"],[fill="#D8BE8C"]{stroke:var(--gold-18);fill:var(--gold-18)}
+
   *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{width:1080px;height:1440px;overflow:hidden;background:#1B1834;}
+  html,body{width:1080px;height:1440px;overflow:hidden;background:var(--ink-7);}
   body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased;}
   .card{position:relative;width:1080px;height:1440px;overflow:hidden;
-        background:linear-gradient(158deg,#241F44 0%,#1A1731 44%,#221C3E 72%,#1D1836 100%);}
+        background:linear-gradient(158deg,var(--ink-11) 0%,var(--ink-5) 44%,var(--ink-9) 72%,var(--ink-8) 100%);}
 
   /* ── 底纹：放射光线（PDF 里最有辨识度的一层） ── */
   .rays{position:absolute;left:0;top:0;width:1080px;height:1440px;}
@@ -22,11 +56,11 @@
 
   /* ── 品牌标识：居中大字 + 小字 + 菱形 ── */
   .env{position:absolute;left:0;top:0;width:1080px;height:202px;
-       background:linear-gradient(180deg,#241D4E 0%,#1A1436 40%,#100C24 100%);
+       background:linear-gradient(180deg,var(--ink-12) 0%,var(--ink-6) 40%,var(--ink-2) 100%);
        clip-path:polygon(0 0,1080px 0,1080px 202px,540px 129px,0 202px);}
   .envline{position:absolute;left:0;top:0;width:1080px;height:202px;pointer-events:none;}
   .panel:after{content:'';position:absolute;left:0;right:0;top:-64px;height:65px;
-       background:linear-gradient(180deg,rgba(20,14,38,.30) 0%,rgba(20,14,38,.13) 32%,rgba(20,14,38,0) 74%),#FEF9F0;
+       background:linear-gradient(180deg,rgba(20,14,38,.30) 0%,rgba(20,14,38,.13) 32%,rgba(20,14,38,0) 74%),var(--cream-14);
        clip-path:polygon(0 64px,476px 0,952px 64px,952px 100%,0 100%);}
   .brand{position:absolute;left:0;top:12px;width:1080px;text-align:center;}
   .brand .wm{position:relative;display:inline-block;font-weight:900;font-size:64px;line-height:1;
@@ -34,15 +68,15 @@
   .brand .wm span{position:relative;z-index:3;display:block;
         -webkit-background-clip:text;background-clip:text;
         -webkit-text-fill-color:transparent;color:transparent;
-        background-image:linear-gradient(180deg,#FFF6DA 0%,#F4DAA6 16%,#E6C085 38%,
-              #D2A05C 66%,#B57F38 100%);
-        -webkit-text-stroke:3.2px #E2BA7E;}
+        background-image:linear-gradient(180deg,var(--cream-7) 0%,var(--gold-26) 16%,var(--gold-19) 38%,
+              var(--gold-12) 66%,var(--gold-4) 100%);
+        -webkit-text-stroke:3.2px var(--gold-17);}
   .brand .wm:before,.brand .wm:after{content:attr(data-t);position:absolute;top:0;left:16px;}
-  .brand .wm:after{-webkit-text-stroke:8px #FFFBEF;color:#FFFBEF;
-        -webkit-text-fill-color:#FFFBEF;z-index:2;}
-  .brand .wm:before{-webkit-text-stroke:10px #0C0918;color:#0C0918;
-        -webkit-text-fill-color:#0C0918;z-index:1;
-        text-shadow:4px 5px 0 #0C0918,0 14px 26px rgba(0,0,0,.46);}
+  .brand .wm:after{-webkit-text-stroke:8px var(--cream-15);color:var(--cream-15);
+        -webkit-text-fill-color:var(--cream-15);z-index:2;}
+  .brand .wm:before{-webkit-text-stroke:10px var(--ink-1);color:var(--ink-1);
+        -webkit-text-fill-color:var(--ink-1);z-index:1;
+        text-shadow:4px 5px 0 var(--ink-1),0 14px 26px rgba(0,0,0,.46);}
   .brand .sb{position:relative;display:table;margin:18px auto 0;padding:0 80px;}
   .brand .sb:before,.brand .sb:after{content:'';position:absolute;top:50%;width:62px;height:1px;}
   .brand .sb:before{left:0;background:linear-gradient(90deg,transparent,rgba(216,190,140,.70));}
@@ -52,42 +86,42 @@
 
   /* ── 悬浮圆角内容板 ── */
   .panel{position:absolute;left:64px;top:190px;width:952px;height:1024px;
-         background:linear-gradient(178deg,#FEF9F0 0%,#FBF1DF 62%,#F8EBD4 100%);
+         background:linear-gradient(178deg,var(--cream-14) 0%,var(--cream-9) 62%,var(--cream-3) 100%);
          border-radius:26px;padding:92px 58px 0;
          box-shadow:0 26px 60px rgba(8,6,22,.42);}
   .panel:before{content:'';position:absolute;left:12px;top:12px;right:12px;bottom:12px;
          border:1px solid rgba(196,158,96,.26);border-radius:18px;pointer-events:none;}
 
   /* 贴在面板上沿的小药丸标签 */
-  .pill{position:absolute;z-index:6;left:58px;top:-27px;background:#241F44;color:#F2E1BE;
+  .pill{position:absolute;z-index:6;left:58px;top:-27px;background:var(--ink-11);color:var(--gold-30);
         font-size:22px;line-height:1;font-weight:700;letter-spacing:.14em;
         padding:17px 32px;border-radius:999px;text-indent:.14em;
         box-shadow:0 10px 24px rgba(10,8,24,.34);}
   .pill:after{content:'';position:absolute;left:50%;bottom:-9px;margin-left:-9px;
-        width:18px;height:9px;background:#241F44;
+        width:18px;height:9px;background:var(--ink-11);
         clip-path:polygon(0 0,100% 0,50% 100%);}
 
-  h1{font-size:54px;line-height:1.42;font-weight:800;color:#241E44;letter-spacing:.008em;}
+  h1{font-size:54px;line-height:1.42;font-weight:800;color:var(--ink-10);letter-spacing:.008em;}
   /* 马克笔高亮：色块压在字上，不是改字色 */
   .mk{background:linear-gradient(180deg,rgba(240,190,116,.30) 14%,rgba(238,178,92,.62) 14%,
        rgba(238,178,92,.62) 90%,rgba(240,190,116,.30) 90%);
        padding:0 6px;margin:0 -6px;border-radius:3px;}
-  .g{color:#A8802F;}
+  .g{color:var(--gold-3);}
 
   .sep{height:1px;background:linear-gradient(90deg,rgba(196,158,96,.5),rgba(196,158,96,0));
        margin:38px 0 34px;}
 
-  .body{font-size:28px;line-height:1.8;color:#57506C;letter-spacing:.012em;}
+  .body{font-size:28px;line-height:1.8;color:var(--gray-1);letter-spacing:.012em;}
   .body p{margin-bottom:16px;}
   .body p:last-child{margin-bottom:0;}
-  .body b{color:#241E44;font-weight:700;}
+  .body b{color:var(--ink-10);font-weight:700;}
 
   /* ── 两栏对照：左灰右黑，中间一条竖金线 ── */
   .cmp{position:absolute;left:58px;right:58px;top:268px;bottom:104px;
        display:flex;flex-direction:column;justify-content:center;}
   .ch{display:flex;flex:none;padding-bottom:18px;
       border-bottom:1px solid rgba(196,158,96,.45);}
-  .ch div{font-size:25px;letter-spacing:.2em;color:#A8802F;}
+  .ch div{font-size:25px;letter-spacing:.2em;color:var(--gold-3);}
   .ch .l{flex:0 0 48%;}
   .ch .r{flex:1;padding-left:27px;}
 
@@ -95,32 +129,32 @@
       border-bottom:1px solid rgba(196,158,96,.24);}
   .cr:last-of-type{border-bottom:none;}
   .cr .l{flex:0 0 48%;align-self:stretch;display:flex;align-items:center;
-      padding-right:26px;font-size:30px;line-height:1.46;color:#8B8398;letter-spacing:.012em;}
+      padding-right:26px;font-size:30px;line-height:1.46;color:var(--neutral-4);letter-spacing:.012em;}
   .cr .l span,.cr .r span{display:block;width:100%;}
   /* 竖分隔线要撑满整行高度，否则只跟着文字高度，看起来像断的 */
   .cr .r{flex:1;align-self:stretch;display:flex;align-items:center;
       padding-left:26px;font-size:30px;line-height:1.46;font-weight:800;background:rgba(228,203,160,.20);
-      color:#241E44;letter-spacing:.012em;border-left:1px solid rgba(196,158,96,.55);}
-  .cr .r em{font-style:normal;color:#A8802F;}
+      color:var(--ink-10);letter-spacing:.012em;border-left:1px solid rgba(196,158,96,.55);}
+  .cr .r em{font-style:normal;color:var(--gold-3);}
 
   /* 面板底部信息条：把内容撑住，避免正文短时下面空一大块 */
   .pfoot{position:absolute;left:58px;right:58px;bottom:44px;
         border-top:1px solid rgba(196,158,96,.30);padding-top:22px;
-        display:flex;align-items:center;font-size:16px;letter-spacing:.2em;color:#A8802F;}
+        display:flex;align-items:center;font-size:16px;letter-spacing:.2em;color:var(--gold-3);}
   .pfoot i{display:block;width:34px;height:1px;background:rgba(168,128,47,.5);margin-right:13px;}
-  .pfoot span{margin-left:auto;font-size:13px;letter-spacing:.26em;color:#A9A2B4;}
+  .pfoot span{margin-left:auto;font-size:13px;letter-spacing:.26em;color:var(--gray-5);}
 
   /* ── 悬浮白色签名卡 ── */
   .plate{position:absolute;left:64px;top:1240px;width:952px;height:140px;
-         background:#FFFFFF;border-radius:20px;display:flex;align-items:center;
+         background:var(--neutral-5);border-radius:20px;display:flex;align-items:center;
          padding:0 26px;box-shadow:0 16px 38px rgba(8,6,22,.34);}
   .plate .av{width:76px;height:76px;border-radius:50%;object-fit:cover;flex:none;
-         border:2px solid #EFE2C8;}
+         border:2px solid var(--cream-1);}
   .plate .who{margin-left:22px;flex:1 1 auto;min-width:0;}
-  .plate .nm{font-size:31px;font-weight:700;color:#241E44;letter-spacing:.05em;display:flex;align-items:center;}
-  .plate .tag{margin-left:14px;font-size:17px;font-weight:400;color:#A8802F;
+  .plate .nm{font-size:31px;font-weight:700;color:var(--ink-10);letter-spacing:.05em;display:flex;align-items:center;}
+  .plate .tag{margin-left:14px;font-size:17px;font-weight:400;color:var(--gold-3);
          border:1px solid rgba(168,128,47,.42);border-radius:999px;padding:5px 13px;letter-spacing:.06em;}
-  .plate .og{margin-top:8px;font-size:21px;color:#8A8496;letter-spacing:.08em;}
+  .plate .og{margin-top:8px;font-size:21px;color:var(--neutral-3);letter-spacing:.08em;}
   .plate .qr{width:118px;height:118px;border-radius:8px;flex:none;}
 </style>
 </head>

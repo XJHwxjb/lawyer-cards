@@ -76,6 +76,18 @@ if (Test-Path -LiteralPath $tplDir) {
 }
 Write-Host "    模板数量：$tplCount / 14" -ForegroundColor DarkGray
 
+$themeFile = Join-Path $dst 'themes.json'
+if (Test-Path -LiteralPath $themeFile) {
+    try {
+        $names = (Get-Content -LiteralPath $themeFile -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties.Name
+        Write-Host ("    配色：{0} 套（{1}）" -f $names.Count, ($names -join ' / ')) -ForegroundColor DarkGray
+    } catch {
+        Write-Host '    配色：themes.json 读不出来' -ForegroundColor Yellow
+    }
+} else {
+    Write-Host '    配色：themes.json 缺失，只能用默认紫金' -ForegroundColor Yellow
+}
+
 $edge = $null
 $cands = @()
 if (${env:ProgramFiles(x86)}) { $cands += (Join-Path ${env:ProgramFiles(x86)} 'Microsoft\Edge\Application\msedge.exe') }

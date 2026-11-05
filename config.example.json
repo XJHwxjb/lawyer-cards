@@ -1,10 +1,15 @@
 {
   "_configured": false,
-  "_help": "name / org 填你自己；brand 是品牌系列卡片顶部那个栏目名（不填就用 name）；brandsub 是它下面那行小字。填完把 _configured 改成 true。",
+  "_help": "name / org 填你自己；brand 是品牌系列卡片顶部那个栏目名（不填就用 name）；brandsub 是它下面那行小字。theme 是配色：purple（深紫金，默认）/ navy（藏青）/ emerald（墨绿）/ wine（酒红）。想用自己的色号，就把 themeCustom 里的 bg（底色）和 accent（金色）填成 #RRGGBB，填了就盖过 theme；只填一个也行，另一个保持默认。填完把 _configured 改成 true。",
   "name": "",
   "org": "",
   "brand": "",
   "brandsub": "",
+  "theme": "purple",
+  "themeCustom": {
+    "bg": "",
+    "accent": ""
+  },
   "kicker": "法律常识",
   "issue": "",
   "page": "01 / 03",

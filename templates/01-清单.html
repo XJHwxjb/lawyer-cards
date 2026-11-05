@@ -4,13 +4,24 @@
 <meta charset="utf-8">
 <title>01-清单</title>
 <style>
+:root{
+  --ink-10:#241E44;
+  --other-4:#6B7789;
+  --other-12:#C9D6E4;
+  --gold-14:#D0B27B;
+  --cream-11:#EBEEF3;
+  --neutral-5:#FFFFFF;
+}
+  /* SVG 呈现属性不能用 var()，用属性选择器覆盖 */
+[stroke="#D0B27B"],[fill="#D0B27B"]{stroke:var(--gold-14);fill:var(--gold-14)}
+
   *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{width:1080px;height:1440px;overflow:hidden;background:#FFFFFF;}
+  html,body{width:1080px;height:1440px;overflow:hidden;background:var(--neutral-5);}
   body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased;}
-  .card{position:relative;width:1080px;height:1440px;background:#FFFFFF;overflow:hidden;}
+  .card{position:relative;width:1080px;height:1440px;background:var(--neutral-5);overflow:hidden;}
 
   /* ── 上半深色斜切块 ── */
-  .hero{position:absolute;left:0;top:0;width:1080px;height:520px;background:#241E44;
+  .hero{position:absolute;left:0;top:0;width:1080px;height:520px;background:var(--ink-10);
         clip-path:polygon(0 0,100% 0,100% 428px,0 520px);overflow:hidden;}
   .tex{position:absolute;inset:0;
        background-image:
@@ -19,47 +30,47 @@
   .ring{position:absolute;border-radius:50%;border:1px solid rgba(216,190,140,.26);}
   .ring.a{width:560px;height:560px;left:710px;top:-250px;}
   .ring.b{width:820px;height:820px;left:580px;top:-380px;}
-  .dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#D0B27B;}
+  .dot{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--gold-14);}
   .dot.d1{left:788px;top:224px;}
   .dot.d2{left:846px;top:411px;}
 
   .kick{position:absolute;left:74px;top:100px;display:flex;align-items:center;}
-  .kick i{display:block;width:34px;height:1px;background:#D0B27B;margin-right:16px;}
+  .kick i{display:block;width:34px;height:1px;background:var(--gold-14);margin-right:16px;}
   .kick span{font-size:21px;color:rgba(255,255,255,.62);letter-spacing:.24em;}
-  .kick b{font-size:18px;font-weight:400;color:#D0B27B;letter-spacing:.1em;
+  .kick b{font-size:18px;font-weight:400;color:var(--gold-14);letter-spacing:.1em;
           border:1px solid rgba(216,190,140,.42);padding:3px 11px;margin-left:18px;}
 
   .ttl{position:absolute;left:74px;top:194px;width:840px;
-       font-size:72px;line-height:1.26;font-weight:800;color:#FFFFFF;letter-spacing:.004em;}
-  .ttl .g{color:#D0B27B;}
+       font-size:72px;line-height:1.26;font-weight:800;color:var(--neutral-5);letter-spacing:.004em;}
+  .ttl .g{color:var(--gold-14);}
 
   /* 破界角标 */
-  .badge{position:absolute;left:74px;top:486px;background:#D0B27B;color:#241E44;
+  .badge{position:absolute;left:74px;top:486px;background:var(--gold-14);color:var(--ink-10);
          font-size:22px;font-weight:700;letter-spacing:.12em;padding:13px 26px;}
 
   /* ── 列表区：自动均分填满，不留底白 ── */
   .list{position:absolute;left:0;top:556px;bottom:150px;width:1080px;justify-content:center;
         padding:0 74px;display:flex;flex-direction:column;}
   .it{flex:0 0 auto;min-height:147px;display:flex;align-items:center;
-      border-bottom:1px solid #EBEEF3;}
+      border-bottom:1px solid var(--cream-11);}
   .it:last-child{border-bottom:none;}
   .n{flex:none;width:100px;font-family:Georgia,serif;font-size:58px;line-height:1;
-     color:#C9D6E4;letter-spacing:.02em;}
+     color:var(--other-12);letter-spacing:.02em;}
   .i{flex:none;width:24px;height:24px;margin-right:20px;}
   .i svg{display:block;width:24px;height:24px;}
   .t{flex:1 1 auto;min-width:0;}
-  .t h3{font-size:33px;line-height:1.3;font-weight:700;color:#241E44;letter-spacing:.01em;}
-  .t p{margin-top:9px;font-size:26px;line-height:1.42;color:#6B7789;letter-spacing:.01em;}
+  .t h3{font-size:33px;line-height:1.3;font-weight:700;color:var(--ink-10);letter-spacing:.01em;}
+  .t p{margin-top:9px;font-size:26px;line-height:1.42;color:var(--other-4);letter-spacing:.01em;}
 
   /* ── 签名条 ── */
-  .sig{position:absolute;left:0;bottom:0;width:1080px;height:150px;background:#241E44;
+  .sig{position:absolute;left:0;bottom:0;width:1080px;height:150px;background:var(--ink-10);
        display:flex;align-items:center;padding:0 74px;}
   .sig .av{width:66px;height:66px;border-radius:50%;object-fit:cover;
            border:1px solid rgba(216,190,140,.5);}
   .sig .who{margin-left:22px;}
-  .sig .nm{font-size:30px;font-weight:600;color:#FFFFFF;letter-spacing:.04em;}
+  .sig .nm{font-size:30px;font-weight:600;color:var(--neutral-5);letter-spacing:.04em;}
   .sig .og{margin-top:6px;font-size:22px;color:rgba(255,255,255,.5);letter-spacing:.08em;}
-  .sig .qr{width:112px;height:112px;margin-left:auto;padding:9px;background:#FFFFFF;
+  .sig .qr{width:112px;height:112px;margin-left:auto;padding:9px;background:var(--neutral-5);
        border-radius:9px;flex:none;box-sizing:content-box;}
 </style>
 </head>
